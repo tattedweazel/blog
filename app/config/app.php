@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => getenv('DEBUG'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -125,7 +125,8 @@ return array(
 		'Laracasts\Commander\CommanderServiceProvider',
 		'Laracasts\Validation\ValidationServiceProvider',
 		'Laracasts\Utilities\UtilitiesServiceProvider',
-		'Laracasts\Flash\FlashServiceProvider'
+		'Laracasts\Flash\FlashServiceProvider',
+		'Blog\Core\Providers\EventServiceProvider',
 
 	),
 

@@ -15,18 +15,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 @unless($current_user)
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Log In</a></li>
+                <li><a href="{{ URL::route('register_path') }}">Sign Up</a></li>
+                <li><a href="{{ URL::route('login_path') }}">Log In</a></li>
                 @endunless
                 @if ($current_user)
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $current_user->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="{{ URL::route('logout_path') }}">Log Out</a></li>
                     </ul>
                 </li>
                 @endif
