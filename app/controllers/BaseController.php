@@ -13,6 +13,9 @@ class BaseController extends Controller {
 		{
 			$this->layout = View::make($this->layout);
 		}
+
+		View::share('current_user', Auth::user());
+		View::share('site_name', getenv('SITE_NAME'));
 	}
 
 }
