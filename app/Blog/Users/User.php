@@ -41,4 +41,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $user;
 	}
 
+	public function canAdmin(){
+		return ($this->type == 'Admin');
+	}
+
+	public function canWrite(){
+		switch($this->type){
+			case 'Admin':
+			case 'Author':
+				return true;
+				break;
+			default:
+				return false;
+		}
+	}
+
+	public function canModerate(){
+		switch($this->type){
+			case 'Admin':
+			case 'Author':
+			case 'Mod':
+				return true;
+			break;
+			default:
+				return false;
+		}
+	}
+
 }

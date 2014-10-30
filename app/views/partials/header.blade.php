@@ -25,6 +25,9 @@
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
+                        @if ($current_user->canAdmin())
+                            <li><a href="{{ URL::route('user_admin_path') }}">User Admin</a></li>
+                        @endif
                         <li class="divider"></li>
                         <li><a href="{{ URL::route('logout_path') }}">Log Out</a></li>
                     </ul>

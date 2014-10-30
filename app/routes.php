@@ -38,3 +38,11 @@ Route::post('/register', [
 	'before' => 'guest',
 	'uses' => 'RegistrationsController@store'
 ]);
+
+
+/** User Admin */
+Route::get('/admin', [
+	'as' => 'user_admin_path',
+	'before' => 'auth',
+	'uses' => 'AdminController@index'
+]);
