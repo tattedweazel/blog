@@ -44,14 +44,19 @@ class ArticlesController extends \BaseController {
 		}
 		$article->save();
 
-
-
-
+		return Redirect::route('article_path', $article->slug);
 	}
 
-	public function show($id)
+	public function show($slug)
 	{
-		//
+		$article = Article::where('slug', '=', $slug)->first();
+		if (! $article->public && ! Auth::check()){
+			return Redirect::home();
+		}
+
+		return View::make('pages.articles.full')
+			->withSectionTitle($article->title)
+			->withArticle($article);
 	}
 
 	public function edit($id)
