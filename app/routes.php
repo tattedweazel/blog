@@ -77,3 +77,21 @@ Route::post('/account/{id}/update-type',[
 	'before' => 'auth',
 	'uses' => 'AccountController@updateType'
 ]);
+
+/** Articles */
+Route::get('/articles/new', [
+	'as' => 'new_article_path',
+	'before' => 'auth',
+	'uses' => 'ArticlesController@create'
+]);
+
+Route::post('/articles/new', [
+	'as' => 'new_article_path',
+	'before' => 'auth',
+	'uses' => 'ArticlesController@store'
+]);
+
+Route::get('/articles/{slug}', [
+	'as' => 'article_path',
+	'uses' => 'ArticlesController@show'
+]);

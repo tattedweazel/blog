@@ -25,6 +25,9 @@
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="{{ URL::route('account_path', $current_user->id) }}">My Info</a></li>
+                        @if ($current_user->canWrite())
+                            <li><a href="{{ URL::route('new_article_path') }}">New Article</a></li>
+                        @endif
                         @if ($current_user->canAdmin())
                             <li><a href="{{ URL::route('user_admin_path') }}">User Admin</a></li>
                         @endif
