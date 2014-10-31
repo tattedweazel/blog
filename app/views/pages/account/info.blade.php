@@ -12,6 +12,9 @@
 
         <br/><br/>
 
+        @include('pages.account.partials.type')
+
+        <br/><br/>
         @include('pages.account.partials.delete')
     </div>
 @stop

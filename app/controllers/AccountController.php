@@ -82,6 +82,20 @@ class AccountController extends \BaseController {
 		return Redirect::back();
 	}
 
+	public function updateType($id)
+	{
+		$account = User::find($id);
+		if ( ! $this->canDelete(Auth::user(), $account) ){
+			return Redirect::back()->withErrors('Unable to Update User Type');
+		}
+
+		$formData = Input::only('type');
+		$account->type = $formData['type'];
+		$account->save();
+
+		return Redirect::back();
+	}
+
 	public function destroy($id)
 	{
 		$account = User::find($id);

@@ -71,3 +71,9 @@ Route::post('/account/{id}/delete',[
 	'before' => 'auth',
 	'uses' => 'AccountController@destroy'
 ]);
+
+Route::post('/account/{id}/update-type',[
+	'as' => 'update_user_type_path',
+	'before' => 'auth',
+	'uses' => 'AccountController@updateType'
+]);
