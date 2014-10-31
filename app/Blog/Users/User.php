@@ -68,4 +68,24 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 	}
 
+	public function privsMessage(){
+		switch ($this->type){
+			case 'Admin':
+				$msg = 'You are an Admin. YAY!';
+				break;
+			case 'Author':
+				$msg = 'You are an Author. Woot!';
+				break;
+			case 'Mod':
+				$msg = 'You are a Moderator. Neat!';
+				break;
+			case 'User':
+			default:
+				$msg = '';
+				break;
+		}
+		return $msg;
+
+	}
+
 }

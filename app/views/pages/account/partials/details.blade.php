@@ -3,6 +3,7 @@
     <div class="col-md-6 col-md-offset-3">
         @include('partials.errors')
         <div class="form-group-lg">
+            @include('pages.account.partials.privs')
             <div class="input-group input-group-lg push-bottom">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" class="form-control" name="name" placeholder="Username" value="{{ $account->name }}" required>
