@@ -7,7 +7,11 @@
             <h2>Current Users</h2>
             <ul>
                 @foreach ($users as $user)
-                    <li>{{ $user->name }} - {{ $user->email }} - {{ $user->type }}</li>
+                    <li>
+                        <a href="{{ URL::route('account_path', $user->id) }}">
+                            {{ $user->name }} - {{ $user->email }} - {{ $user->type }}
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         </div>

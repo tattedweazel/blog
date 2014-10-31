@@ -24,7 +24,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="{{ URL::route('account_path', $current_user->id) }}">My Info</a></li>
                         @if ($current_user->canAdmin())
                             <li><a href="{{ URL::route('user_admin_path') }}">User Admin</a></li>
                         @endif

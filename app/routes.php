@@ -46,3 +46,28 @@ Route::get('/admin', [
 	'before' => 'auth',
 	'uses' => 'AdminController@index'
 ]);
+
+/** Accounts */
+Route::get('/account/{id}', [
+	'as' => 'account_path',
+	'before' => 'auth',
+	'uses' => 'AccountController@show'
+]);
+
+Route::post('/account/{id}', [
+	'as' => 'account_path',
+	'before' => 'auth',
+	'uses' => 'AccountController@update'
+]);
+
+Route::post('/account/{id}/update-password', [
+	'as' => 'update_password_path',
+	'before' => 'auth',
+	'uses' => 'AccountController@updatePassword'
+]);
+
+Route::post('/account/{id}/delete',[
+	'as' => 'delete_user_path',
+	'before' => 'auth',
+	'uses' => 'AccountController@destroy'
+]);
