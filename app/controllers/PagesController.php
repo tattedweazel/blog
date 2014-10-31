@@ -12,6 +12,7 @@ class PagesController extends BaseController {
 		else {
 			$articles = Article::where('public', '=', '1')->orderBy('created_at', 'desc')->take(10)->get();
 		}
+		$articles->load('user');
 
 		return View::make('pages.generic.home')
 			->withSectionTitle('Home')

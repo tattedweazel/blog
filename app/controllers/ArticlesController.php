@@ -42,6 +42,8 @@ class ArticlesController extends \BaseController {
 		if (isset($formData['public']) && $formData['public']){
 			$article->public = 1;
 		}
+		$currentUser = Auth::user();
+		$article->user_id = $currentUser->id;
 		$article->save();
 
 		return Redirect::route('article_path', $article->slug);
@@ -49,7 +51,7 @@ class ArticlesController extends \BaseController {
 
 	public function show($slug)
 	{
-		$article = Article::where('slug', '=', $slug)->first();
+		$article = Article::where('slug', '=', $slug)->with('user')->first();
 		if (! $article->public && ! Auth::check()){
 			return Redirect::home();
 		}
