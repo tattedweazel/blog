@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-sm-10 push-bottom">
                 <div class="input-group input-group-lg push-bottom">
-                    <input type="submit" value="Publish!" class="btn btn-lg btn-primary"/>
+                    <input type="submit" value="Save!" class="btn btn-lg btn-primary"/>
                 </div>
             </div>
         </div>

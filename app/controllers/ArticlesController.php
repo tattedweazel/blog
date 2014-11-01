@@ -62,7 +62,9 @@ class ArticlesController extends \BaseController {
 		}
 		$currentUser = Auth::user();
 		$article->user_id = $currentUser->id;
-		$article->save();
+		if ($currentUser->canWrite()){
+			$article->save();
+		}
 
 		return Redirect::route('article_path', $article->slug);
 	}
@@ -130,16 +132,55 @@ class ArticlesController extends \BaseController {
 			$article->public = $formData['public'];
 		}
 
-		$article->save();
+		$currentUser = Auth::user();
+		if ($currentUser->canWrite()){
+			$article->save();
+		}
 		return Redirect::route('article_path', $article->slug);
+	}
+
+	public function publish($id)
+	{
+		$article = Article::find($id);
+		$currentUser = Auth::user();
+		if ($currentUser->canWrite()){
+			$article->published = 1;
+			$article->save();
+		}
+
+		return Redirect::route('article_path', $article->slug);
+	}
+
+	public function unpublish($id)
+	{
+		$article = Article::find($id);
+		$currentUser = Auth::user();
+		if ($currentUser->canWrite()){
+			$article->published = 0;
+			$article->save();
+		}
+
+		return Redirect::route('article_path', $article->slug);
+	}
+
+	public function drafts()
+	{
+		$articles = Article::where('published', '=', 0)->get();
+		$currentUser = Auth::user();
+		if (!$currentUser->canWrite()){
+			return Redirect::home();
+		}
+		return View::make('pages.admin.drafts')
+			->withSectionTitle('Drafts')
+			->withArticles($articles);
 	}
 
 	public function destroy($id)
 	{
-		if ($id != 1){
+		$currentUser = Auth::user();
+		if ($id != 1 && $currentUser->canAdmin()){
 			Article::destroy($id);
 		}
-
 		return Redirect::home();
 	}
 

@@ -98,15 +98,36 @@ Route::get('/articles/{slug}', [
 
 Route::get('/articles/{slug}/edit', [
 	'as' => 'edit_article_path',
+	'before' => 'auth',
 	'uses' => 'ArticlesController@edit'
 ]);
 
 Route::post('/articles/{slug}/edit', [
 	'as' => 'edit_article_path',
+	'before' => 'auth',
 	'uses' => 'ArticlesController@update'
 ]);
 
 Route::post('/articles/{id}/delete', [
 	'as' => 'delete_article_path',
+	'before' => 'auth',
 	'uses' => 'ArticlesController@destroy'
+]);
+
+Route::post('/articles/{id}/publish', [
+	'as' => 'publish_article_path',
+	'before' => 'auth',
+	'uses' => 'ArticlesController@publish'
+]);
+
+Route::post('/articles/{id}/unpublish', [
+	'as' => 'unpublish_article_path',
+	'before' => 'auth',
+	'uses' => 'ArticlesController@unpublish'
+]);
+
+Route::get('/drafts', [
+	'as' => 'drafts_path',
+	'before' => 'auth',
+	'uses' => 'ArticlesController@drafts'
 ]);

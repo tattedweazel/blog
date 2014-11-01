@@ -16,3 +16,9 @@ body {
 .article-option {
     display: inline-block;
 }
+
+.draft-label {
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
