@@ -94,9 +94,10 @@ class ArticlesController extends \BaseController {
 
 	public function update($slug)
 	{
-
 		$article = Article::where('slug', '=', $slug)->with('user')->first();
-
+		if ($article->id == 1){
+			return Redirect::back()->withErrors('You can never, ever, EVER, corrupt the first article made here. Nice try.');
+		}
 		$formData = Input::only('title', 'sub_title', 'body', 'public');
 		$this->editArticleForm->validate($formData);
 
@@ -135,7 +136,11 @@ class ArticlesController extends \BaseController {
 
 	public function destroy($id)
 	{
-		//
+		if ($id != 1){
+			Article::destroy($id);
+		}
+
+		return Redirect::home();
 	}
 
 }

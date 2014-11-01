@@ -105,3 +105,8 @@ Route::post('/articles/{slug}/edit', [
 	'as' => 'edit_article_path',
 	'uses' => 'ArticlesController@update'
 ]);
+
+Route::post('/articles/{id}/delete', [
+	'as' => 'delete_article_path',
+	'uses' => 'ArticlesController@destroy'
+]);

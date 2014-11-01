@@ -12,3 +12,7 @@ body {
 .push-bottom {
     margin-bottom: 20px
 }
+
+.article-option {
+    display: inline-block;
+}

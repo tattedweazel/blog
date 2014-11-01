@@ -13,8 +13,9 @@
                 @endif
                 <br/><br/>
                 <p>{{ $article->body }}</p>
+                <br/><br/><br/>
+                @include('pages.articles.partials.options')
             </div>
         </div>
     </div>
-    @include('pages.articles.partials.options')
 @stop
