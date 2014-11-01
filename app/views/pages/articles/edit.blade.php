@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-    {{ Form::open(['route' => 'new_article_path']) }}
+    {{ Form::open(['route' => ['edit_article_path', $article->slug]]) }}
         <div class="row">
             <div class="col-sm-10 push-bottom">
                 @include('partials.errors')
@@ -16,7 +16,12 @@
         </div>
         <div class="row">
             <div class="col-sm-10 push-bottom">
-                <p>Author: {{ $current_user->name }}</p>
+                <p>Author: {{ $article->user->name }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 push-bottom">
+                <p>Article URL: {{ URL::route('article_path', $article->slug) }}</p>
             </div>
         </div>
         <div class="row">
@@ -37,7 +42,7 @@
         <div class="row">
             <div class="col-sm-10 push-bottom">
                 <div class="input-group input-group-lg push-bottom">
-                    <input type="submit" value="Publish!" class="btn btn-lg btn-primary"/>
+                    <input type="submit" value="Save Changes" class="btn btn-lg btn-primary"/>
                 </div>
             </div>
         </div>

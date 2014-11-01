@@ -5,7 +5,7 @@ use Eloquent;
 class Article extends Eloquent {
 
 	protected $table = 'articles';
-	protected $fillable = ['title', 'sub_title', 'body', 'user_id'];
+	protected $fillable = ['title', 'sub_title', 'body', 'public', 'user_id'];
 
 	public function user(){
 		return $this->belongsTo('Blog\Users\User');
@@ -13,7 +13,7 @@ class Article extends Eloquent {
 
 	public function getDates()
 	{
-		return array('created_at');
+		return array('created_at', 'updated_at');
 	}
 
 	public function generateSlug($title)

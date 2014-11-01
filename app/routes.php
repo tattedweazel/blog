@@ -95,3 +95,13 @@ Route::get('/articles/{slug}', [
 	'as' => 'article_path',
 	'uses' => 'ArticlesController@show'
 ]);
+
+Route::get('/articles/{slug}/edit', [
+	'as' => 'edit_article_path',
+	'uses' => 'ArticlesController@edit'
+]);
+
+Route::post('/articles/{slug}/edit', [
+	'as' => 'edit_article_path',
+	'uses' => 'ArticlesController@update'
+]);
