@@ -3,6 +3,7 @@
 use Blog\Articles\Article;
 use Blog\Articles\Forms\NewArticleForm;
 use Blog\Articles\Forms\EditArticleForm;
+use Blog\Categories\Category;
 
 class ArticlesController extends \BaseController {
 
@@ -44,7 +45,7 @@ class ArticlesController extends \BaseController {
 
 	public function store()
 	{
-		$formData = Input::only('title', 'sub_title', 'body', 'public');
+		$formData = Input::only('title', 'sub_title', 'body', 'public', 'category_id');
 		$this->newArticleForm->validate($formData);
 		$article = new Article($formData);
 
@@ -84,13 +85,16 @@ class ArticlesController extends \BaseController {
 	public function edit($slug)
 	{
 		$currentUser = Auth::user();
-		$article = Article::where('slug', '=', $slug)->with('user')->first();
+		$article = Article::where('slug', '=', $slug)->with('user')->with('category')->first();
 		if (! $article->public && ! Auth::check() || ! $currentUser->canWrite()){
 			return Redirect::home();
 		}
 
+		$categories = Category::orderBy('label', 'asc')->get();
+
 		return View::make('pages.articles.edit')
 			->withSectionTitle($article->title)
+			->withCategories($categories)
 			->withArticle($article);
 	}
 
@@ -100,7 +104,7 @@ class ArticlesController extends \BaseController {
 		if ($article->id == 1){
 			return Redirect::back()->withErrors('You can never, ever, EVER, corrupt the first article made here. Nice try.');
 		}
-		$formData = Input::only('title', 'sub_title', 'body', 'public');
+		$formData = Input::only('title', 'sub_title', 'body', 'public', 'category_id');
 		$this->editArticleForm->validate($formData);
 
 		if ($article->title != $formData['title']){
@@ -124,6 +128,11 @@ class ArticlesController extends \BaseController {
 		if ($formData['sub_title'] != $article->sub_title){
 			$article->sub_title = $formData['sub_title'];
 		}
+
+		if ($formData['category_id'] != $article->category_id){
+			$article->category_id = $formData['category_id'];
+		}
+
 		if ($formData['body'] != $article->body){
 			$article->body = $formData['body'];
 		}

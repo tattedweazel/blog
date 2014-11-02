@@ -1,5 +1,7 @@
 <?php
 
+use Blog\Categories\Category;
+
 class BaseController extends Controller {
 
 	/**
@@ -16,6 +18,9 @@ class BaseController extends Controller {
 
 		View::share('current_user', Auth::user());
 		View::share('site_name', getenv('SITE_NAME'));
+
+		$categories = Category::all();
+		View::share('categories', $categories);
 	}
 
 }

@@ -5,10 +5,16 @@ use Eloquent;
 class Article extends Eloquent {
 
 	protected $table = 'articles';
-	protected $fillable = ['title', 'sub_title', 'body', 'public', 'user_id'];
+	protected $fillable = ['title', 'sub_title', 'body', 'public', 'user_id', 'category_id'];
 
-	public function user(){
+	public function user()
+	{
 		return $this->belongsTo('Blog\Users\User');
+	}
+
+	public function category()
+	{
+		return $this->belongsTo('Blog\Categories\Category');
 	}
 
 	public function getDates()

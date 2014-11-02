@@ -131,3 +131,33 @@ Route::get('/drafts', [
 	'before' => 'auth',
 	'uses' => 'ArticlesController@drafts'
 ]);
+
+/** Categories */
+Route::get('/categories', [
+	'as' => 'categories_path',
+	'before' => 'auth',
+	'uses' => 'CategoriesController@index'
+]);
+
+Route::post('/categories/update/{id}', [
+	'as' => 'update_category_path',
+	'before' => 'auth',
+	'uses' => 'CategoriesController@update'
+]);
+
+Route::post('/categories/add', [
+	'as' => 'add_category_path',
+	'before' => 'auth',
+	'uses' => 'CategoriesController@add'
+]);
+
+Route::get('/categories/delete/{id}', [
+	'as' => 'delete_category_path',
+	'before' => 'auth',
+	'uses' => 'CategoriesController@destroy'
+]);
+
+Route::get('/category/{label}', [
+	'as' => 'filter_by_category_path',
+	'uses' => 'CategoriesController@filter'
+]);
