@@ -61,6 +61,9 @@ class CategoriesController extends \BaseController {
 	public function filter($label)
 	{
 		$category = Category::where('label', '=', $label)->first();
+		if (!$category){
+			return Redirect::home();
+		}
 		$articles = Article::where('category_id', '=', $category->id)->orderBy('updated_at', 'desc')->with('category')->get();
 
 		return View::make('pages.articles.filtered')
