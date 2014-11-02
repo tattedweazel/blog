@@ -16,9 +16,13 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 
+		// Used ... like... everywhere
 		View::share('current_user', Auth::user());
+
+		// Used in Title block of default layout
 		View::share('site_name', getenv('SITE_NAME'));
 
+		// Used in Main Header for Nav
 		$categories = Category::all();
 		View::share('categories', $categories);
 	}

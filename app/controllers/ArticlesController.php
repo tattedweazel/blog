@@ -7,25 +7,13 @@ use Blog\Categories\Category;
 
 class ArticlesController extends \BaseController {
 
-
-	/**
-	 * @var NewArticleForm
-	 */
 	private $newArticleForm;
-	/**
-	 * @var EditArticleForm
-	 */
 	private $editArticleForm;
 
 	function __construct(NewArticleForm $newArticleForm, EditArticleForm $editArticleForm)
 	{
 		$this->newArticleForm = $newArticleForm;
 		$this->editArticleForm = $editArticleForm;
-	}
-
-	public function index()
-	{
-		//
 	}
 
 	public function create()
@@ -187,6 +175,7 @@ class ArticlesController extends \BaseController {
 	public function destroy($id)
 	{
 		$currentUser = Auth::user();
+		// Article ID: 1 is special to me. Never let it be deleted or I will be very sad.
 		if ($id != 1 && $currentUser->canAdmin()){
 			Article::destroy($id);
 		}

@@ -1,6 +1,5 @@
 <?php namespace Blog\Users;
 
-
 class UserSignUpCommand {
 
 	public $name;
@@ -13,6 +12,5 @@ class UserSignUpCommand {
 		$this->email = $email;
 		$this->password = $password;
 	}
-
 
 } 

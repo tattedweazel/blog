@@ -17,21 +17,6 @@ class AdminController extends \BaseController {
 			->withUsers($users);
 	}
 
-	public function store()
-	{
-		//
-	}
-
-	public function update($id)
-	{
-		//
-	}
-
-	public function destroy($id)
-	{
-		//
-	}
-
 	private function adminCheck(){
 		$currentUser = Auth::user();
 		if ($currentUser->canAdmin()){

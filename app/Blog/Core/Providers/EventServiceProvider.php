@@ -1,6 +1,5 @@
 <?php namespace Blog\Core\Providers;
 
-
 use Illuminate\Support\ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider{
