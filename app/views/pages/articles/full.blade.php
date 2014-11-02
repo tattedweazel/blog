@@ -13,6 +13,7 @@
                 @endif
                 <br/><br/>
                 <p>{{ $article->body }}</p>
+                @include('pages.articles.partials.view_tags')
                 <br/><br/><br/>
                 @include('pages.articles.partials.options')
             </div>

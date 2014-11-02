@@ -161,3 +161,44 @@ Route::get('/category/{label}', [
 	'as' => 'filter_by_category_path',
 	'uses' => 'CategoriesController@filter'
 ]);
+
+/** Tags */
+Route::get('/tags', [
+	'as' => 'tags_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@index'
+]);
+
+Route::post('/tags/update/{id}', [
+	'as' => 'update_tag_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@update'
+]);
+
+Route::post('/tags/add', [
+	'as' => 'add_tag_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@add'
+]);
+
+Route::get('/tags/delete/{id}', [
+	'as' => 'delete_tag_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@destroy'
+]);
+
+Route::get('/tags/{label}', [
+	'as' => 'filter_by_tag_path',
+	'uses' => 'TagsController@filter'
+]);
+Route::get('/tags/attach/{tag_id}/{article_id}', [
+	'as' => 'attach_tag_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@attach'
+]);
+
+Route::get('/tags/detach/{tag_id}/{article_id}', [
+	'as' => 'detach_tag_path',
+	'before' => 'auth',
+	'uses' => 'TagsController@detach'
+]);

@@ -1,0 +1,1 @@
+<textarea class="form-control" name="body" id="body" rows="12">{{ $article->body }}</textarea>

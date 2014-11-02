@@ -28,3 +28,23 @@ body {
     margin-top: 10px;
     margin-right: 10px;
 }
+
+.delete-icon {
+    color: red;
+}
+
+.tag-link {
+    padding:5px;
+    border:1px solid #CCC;
+    background: #FEFEFE;
+    border-radius: 10px;
+}
+
+.tag-link {
+    text-decoration: none;
+}
+
+.tag-link:hover {
+    background: #EEE;
+    text-decoration: none;
+}

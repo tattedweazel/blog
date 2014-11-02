@@ -7,7 +7,9 @@
             <li class="divider"></li>
             <li><a href="{{ URL::route('drafts_path') }}">View Drafts</a></li>
             <li><a href="{{ URL::route('new_article_path') }}">New Article</a></li>
+            <li class="divider"></li>
             <li><a href="{{ URL::route('categories_path') }}">Edit Categories</a></li>
+            <li><a href="{{ URL::route('tags_path') }}">Edit Tags</a></li>
         @endif
         @if ($current_user->canAdmin())
             <li class="divider"></li>

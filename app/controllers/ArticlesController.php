@@ -4,6 +4,7 @@ use Blog\Articles\Article;
 use Blog\Articles\Forms\NewArticleForm;
 use Blog\Articles\Forms\EditArticleForm;
 use Blog\Categories\Category;
+use Blog\Tags\Tag;
 
 class ArticlesController extends \BaseController {
 
@@ -61,19 +62,23 @@ class ArticlesController extends \BaseController {
 	public function show($slug)
 	{
 		$article = Article::where('slug', '=', $slug)->with('user')->first();
+		$tags = $article->tags;
 		if (! $article->public && ! Auth::check()){
 			return Redirect::home();
 		}
 
 		return View::make('pages.articles.full')
 			->withSectionTitle($article->title)
-			->withArticle($article);
+			->withArticle($article)
+			->withTags($tags);
 	}
 
 	public function edit($slug)
 	{
 		$currentUser = Auth::user();
+		$allTags = Tag::orderBy('label', 'asc')->get();
 		$article = Article::where('slug', '=', $slug)->with('user')->with('category')->first();
+		$tags = $article->tags;
 		if (! $article->public && ! Auth::check() || ! $currentUser->canWrite()){
 			return Redirect::home();
 		}
@@ -83,7 +88,9 @@ class ArticlesController extends \BaseController {
 		return View::make('pages.articles.edit')
 			->withSectionTitle($article->title)
 			->withCategories($categories)
-			->withArticle($article);
+			->withArticle($article)
+			->withAllTags($allTags)
+			->withTags($tags);
 	}
 
 	public function update($slug)
