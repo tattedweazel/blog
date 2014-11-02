@@ -60,11 +60,17 @@ class CategoriesController extends \BaseController {
 
 	public function filter($label)
 	{
+		$currentUser = Auth::user();
 		$category = Category::where('label', '=', $label)->first();
 		if (!$category){
 			return Redirect::home();
 		}
-		$articles = Article::where('category_id', '=', $category->id)->orderBy('updated_at', 'desc')->with('category')->get();
+		if ($currentUser){
+			$articles = Article::where('category_id', '=', $category->id)->orderBy('updated_at', 'desc')->with('category')->get();
+		}
+		else {
+			$articles = Article::where('category_id', '=', $category->id)->where('public', '=',1)->orderBy('updated_at', 'desc')->with('category')->get();
+		}
 
 		return View::make('pages.articles.filtered')
 			->withSectionTitle($category->label)

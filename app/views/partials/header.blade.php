@@ -19,7 +19,7 @@
 
                 @include('partials.non_user')
 
-                @include('partials.user')
+                @include('partials.user_dd')
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
