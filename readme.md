@@ -1,25 +1,21 @@
-## Laravel PHP Framework
+#Blog (working title)
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+Blog is a Laravel 4.2 powered multi-author blogging platform focused on simplicity. It provides:
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+  - RBAC (Admins, Authors, Moderators, Users)
+  - User Administration
+  - Public and Private (account required) Articles
+  - Seamless transition between viewing and editing content
+  - Ability to arrange and filter content by category
+  - Absolutely nothing new that thousands of other platforms provide... just tailored to my linking
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+The true goal of Blog is to provide a platform that includes nifty features like multi-authors, moderators, content filtering, and other fun blog-must-haves but without requiring the user to jump OUT of their content and into some separate "Admin" portal. That transition feels wonky to me, so Blog simply gives various options on the page you're viewing based on your access level. Pretty choice, if you ask me.
 
-## Official Documentation
+This is a work in progress and was primarily developed over a single weekend. As such, there's still a long way to go.
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
 
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+###Installation Instructions
+---
+Don't. It's not ready yet.
