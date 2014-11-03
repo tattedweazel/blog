@@ -108,6 +108,12 @@ Route::post('/articles/{slug}/edit', [
 	'uses' => 'ArticlesController@update'
 ]);
 
+Route::post('/articles/{slug}/comments/add', [
+	'as' => 'add_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@add'
+]);
+
 Route::post('/articles/{id}/delete', [
 	'as' => 'delete_article_path',
 	'before' => 'auth',
@@ -125,6 +131,7 @@ Route::post('/articles/{id}/unpublish', [
 	'before' => 'auth',
 	'uses' => 'ArticlesController@unpublish'
 ]);
+
 
 Route::get('/drafts', [
 	'as' => 'drafts_path',
@@ -201,4 +208,31 @@ Route::get('/tags/detach/{tag_id}/{article_id}', [
 	'as' => 'detach_tag_path',
 	'before' => 'auth',
 	'uses' => 'TagsController@detach'
+]);
+
+/** Comments */
+Route::get('/comments/{id}/upvote', [
+	'as' => 'upvote_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@upvote'
+]);
+Route::get('/comments/{id}/downvote', [
+	'as' => 'downvote_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@downvote'
+]);
+Route::get('/comments/{id}/report', [
+	'as' => 'report_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@report'
+]);
+Route::get('/comments/{id}/disable', [
+	'as' => 'disable_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@disable'
+]);
+Route::get('/comments/{id}/enable', [
+	'as' => 'enable_comment_path',
+	'before' => 'auth',
+	'uses' => 'CommentsController@enable'
 ]);

@@ -26,10 +26,13 @@ class AccountController extends \BaseController {
 		if ( ! $this->canEdit(Auth::user(), $account) ){
 			return Redirect::home();
 		}
-
+		$articles = $account->articles;
+		$comments = $account->comments;
 		return View::make('pages.account.info')
 			->withSectionTitle($account->name)
-			->withAccount($account);
+			->withAccount($account)
+			->withArticles($articles)
+			->withComments($comments);
 	}
 
 	public function update($id)

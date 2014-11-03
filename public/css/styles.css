@@ -48,3 +48,11 @@ body {
     background: #EEE;
     text-decoration: none;
 }
+
+.vote-link:hover {
+    text-decoration: none;
+}
+
+.report-link:hover {
+    text-decoration: none;
+}

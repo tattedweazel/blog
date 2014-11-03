@@ -16,5 +16,11 @@
 
         <br/><br/>
         @include('pages.account.partials.delete')
+
+        <br/><br/>
+        @include('pages.account.partials.posts')
+
+        <br/><br/>
+        @include('pages.account.partials.comments')
     </div>
 @stop

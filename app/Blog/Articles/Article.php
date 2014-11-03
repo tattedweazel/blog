@@ -22,6 +22,11 @@ class Article extends Eloquent {
 		return $this->belongsToMany('Blog\Tags\Tag');
 	}
 
+	public function comments()
+	{
+		return $this->hasMany('Blog\Comments\Comment');
+	}
+
 	public function getDates()
 	{
 		return array('created_at', 'updated_at');

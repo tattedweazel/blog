@@ -66,11 +66,14 @@ class ArticlesController extends \BaseController {
 		if (! $article->public && ! Auth::check()){
 			return Redirect::home();
 		}
+		$comments = $article->comments;
+
 
 		return View::make('pages.articles.full')
 			->withSectionTitle($article->title)
 			->withArticle($article)
-			->withTags($tags);
+			->withTags($tags)
+			->withComments($comments);
 	}
 
 	public function edit($slug)

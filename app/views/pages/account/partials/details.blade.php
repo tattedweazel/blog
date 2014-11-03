@@ -1,6 +1,6 @@
 <div class="container">
     {{ Form::open(['route' => ['account_path', $account->id]]) }}
-    <div class="col-md-6 col-md-offset-3">
+
         @include('partials.errors')
         <div class="form-group-lg">
             @include('pages.account.partials.privs')
@@ -18,6 +18,6 @@
                 <input type="submit" value="Update Info" class="btn btn-lg btn-primary"/>
             </div>
         </div>
-    </div>
+
     {{ Form::close() }}
 </div>
