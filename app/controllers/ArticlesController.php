@@ -66,7 +66,7 @@ class ArticlesController extends \BaseController {
 		if (! $article->public && ! Auth::check()){
 			return Redirect::home();
 		}
-		$comments = $article->comments;
+		$comments = $article->comments()->orderBy('score', 'desc')->orderBy('created_at', 'desc')->get();
 
 
 		return View::make('pages.articles.full')
