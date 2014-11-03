@@ -10,7 +10,7 @@ Blog(wt) is a Laravel 4.2 powered multi-author blogging platform focused on simp
   - Seamless transition between viewing and editing content
   - Ability to arrange and filter content by category and tags
   - Built-in Comments with moderation based on RBAC settings (also includes auto-disable)
-  - Absolutely nothing new that thousands of other platforms provide... just tailored to my linking
+  - Absolutely nothing new that thousands of other platforms provide... just tailored to my liking
 
 The true goal of Blog(wt) is to provide a platform that includes nifty features like multi-authors, moderators, content filtering with categories and tags, comments with moderation abilities, and other fun blog-must-haves but without requiring the user to jump OUT of their content and into some separate "Admin" portal. That transition feels wonky to me, so Blog(wt) simply gives various options on the page you're viewing based on your access level. Pretty choice, if you ask me.
 
