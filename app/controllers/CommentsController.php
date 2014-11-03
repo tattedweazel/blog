@@ -5,7 +5,7 @@ use Blog\Comments\CommentAction;
 
 class CommentsController extends \BaseController {
 
-	const REPORT_THRESHOLD = 1;
+	const REPORT_THRESHOLD = 10;
 
 	public function add($slug)
 	{
