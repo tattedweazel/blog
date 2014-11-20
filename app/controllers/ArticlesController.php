@@ -50,6 +50,9 @@ class ArticlesController extends \BaseController {
 		if (isset($formData['public']) && $formData['public']){
 			$article->public = 1;
 		}
+		else {
+			$article->public = 0;
+		}
 		$currentUser = Auth::user();
 		$article->user_id = $currentUser->id;
 		if ($currentUser->canWrite()){

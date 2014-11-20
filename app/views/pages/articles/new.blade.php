@@ -21,17 +21,17 @@
         </div>
         <div class="row">
             <div class="col-sm-10 push-bottom">
-                <textarea class="form-control" name="body" id="body" rows="12">{{ $article->body }}</textarea>
+               @include('pages.articles.partials.category')
             </div>
         </div>
         <div class="row">
             <div class="col-sm-10 push-bottom">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="public" value="1" {{ ($article->public) ? 'checked' : ''}}>
-                        This is a Public article (non-users can read it)
-                    </label>
-                </div>
+                @include('pages.articles.partials.body_text')
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 push-bottom">
+                @include('pages.articles.partials.public_checkbox')
             </div>
         </div>
         <div class="row">
