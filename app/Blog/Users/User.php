@@ -36,6 +36,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static function signUp($name, $email, $type, $password){
 
 		$user = new static(compact('name', 'email', 'type', 'password'));
+		$user->type = 'User';
+		$user->save();
 
 		$user->raise(new UserSignedUp($user));
 
